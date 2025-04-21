@@ -1,0 +1,124 @@
+[project]
+name = "unofficial-mapy-com-mcp"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx[brotli,http2,zstd]==0.28.1",
+    "fastmcp==2.2.1",
+    "pydantic==2.11.3",
+    "uvloop>=0.21.0; sys_platform != 'win32' and (sys_platform != 'cygwin' and platform_python_implementation != 'PyPy')",
+
+]
+[dependency-groups]
+dev = [
+    "pytest-sugar>=1.0.0",
+    "ruff>=0.11.6",
+    "mypy>=1.15.0",
+    "pytest>=8.3.5",
+    "inline-snapshot>=0.22.3",
+    "pytest-recording>=0.13.2",
+    "hatchling",
+    "pyright[nodejs]>=1.1.399",
+    "pytest-asyncio==0.26.0",
+    "pytest-cov>=6.1.1",
+]
+
+[project.scripts]
+unofficial-mapy-com-mcp = "unofficial_mapy_com_mcp.server:entry_point"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 120
+target-version = 'py312'
+
+
+[tool.ruff.lint]
+select = [
+    'A', # flake8-builtins
+    'ASYNC', # flake8-async
+    'B', # flake8-bugbear
+    'C90', # mccabe
+    'COM', # flake8-commas (flake8-simplify)
+    'E', # pycodestyle errors
+    'ERA', # eradicate dead code
+    'EXE',  # flake8-executable
+    'F', # Pyflakes
+    'FA', # flake8-annotations
+    'FLY', # flynt
+    'G', # flake8-logging-format
+    'I', # isort
+    'INP', # flake8-no-pep420
+    'INT', # flake8-gettext
+    'ISC', # flake8-implicit-str-concat
+    'LOG', # flake8-logging
+    'PERF', # Perflint
+    'PIE', # flake8-pie
+    'PL', # Pylint
+    'PLR',
+    'PTH', # flake8-use-pathlib
+    'Q', # flake8-quotes
+    'RET', # flake8-return
+    'RUF', # Ruff-specific rules
+    'SIM', # flake8-simplify
+    'SLF', # flake8-self
+    'T20', # flake8-print
+    'TCH', # flake8-type-checking
+    'TID', # flake8-tidy-imports
+    'UP', # pyupgrade
+    'W', # pycodestyle warnings
+    'YTT'   # flake8-2020
+]
+
+ignore = [
+    'COM812', #conflict with formatter
+    'ISC001', #conflict with formatter
+]
+
+flake8-quotes = { inline-quotes = 'single', multiline-quotes = 'double' }
+mccabe = { max-complexity = 14 }
+
+
+[tool.ruff.format]
+quote-style = 'single'
+line-ending = 'lf'
+indent-style = 'space'
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+python_version = "3.12"
+plugins = [
+    'pydantic.mypy'
+]
+strict = true
+
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+disallow_untyped_defs = true
+packages = ["unofficial_mapy_com_mcp"]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.pyright]
+include = ["src"]
+reportMissingTypeStubs = "error"
+reportPropertyTypeMismatch = "error"
+reportUnusedImport = "error"
+reportUnusedClass = "error"
+reportUnusedFunction = "error"
+reportUnusedVariable = "error"
+reportDuplicateImport = "error"
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"

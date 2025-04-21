@@ -1,0 +1,41 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, br, zstd
+      connection:
+      - keep-alive
+      host:
+      - api.mapy.cz
+      user-agent:
+      - python-httpx/0.28.1
+    method: GET
+    uri: https://api.mapy.cz/v1/geocode?query=Vaclav+Havel+Airport+Prague&lang=en&limit=1
+  response:
+    body:
+      string: "{\"items\":[{\"name\":\"V\xE1clav Havel Airport Prague\",\"label\":\"International
+        airport\",\"position\":{\"lon\":14.26212,\"lat\":50.1084},\"bbox\":[14.256508869274253,50.10623468722968,14.267737810325748,50.11055560991042],\"type\":\"poi\",\"location\":\"Aviatick\xE1
+        1017/2, Prague 6 - Ruzyn\u011B, Czechia\",\"regionalStructure\":[{\"name\":\"1017/2\",\"type\":\"regional.address\"},{\"name\":\"Aviatick\xE1\",\"type\":\"regional.street\"},{\"name\":\"Ruzyn\u011B\",\"type\":\"regional.municipality_part\"},{\"name\":\"Prague
+        6\",\"type\":\"regional.municipality_part\"},{\"name\":\"Prague\",\"type\":\"regional.municipality\"},{\"name\":\"Prague\",\"type\":\"regional.region\"},{\"name\":\"Czechia\",\"type\":\"regional.country\",\"isoCode\":\"CZ\"}],\"zip\":\"16100\"}],\"locality\":[]}"
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      content-length:
+      - '685'
+      content-type:
+      - application/json
+      date:
+      - Mon, 21 Apr 2025 14:39:34 GMT
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-envoy-upstream-service-time:
+      - '372'
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,0 +1,38 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, br, zstd
+      connection:
+      - keep-alive
+      host:
+      - api.mapy.cz
+      user-agent:
+      - python-httpx/0.28.1
+    method: GET
+    uri: https://api.mapy.cz/v1/routing/route?start=0.0%2C0.0&end=16.6085958%2C49.1948039&routeType=car_fast_traffic&avoid_toll=false
+  response:
+    body:
+      string: '{"detail":[{"msg":"Edge not found","errorCode":7}]}'
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      content-length:
+      - '51'
+      content-type:
+      - application/json
+      date:
+      - Mon, 21 Apr 2025 14:39:36 GMT
+      server:
+      - envoy
+      vary:
+      - Origin
+      x-envoy-upstream-service-time:
+      - '164'
+    status:
+      code: 404
+      message: Not Found
+version: 1
